@@ -60,6 +60,7 @@
     border: 2px solid #333;
     box-shadow: none;
   }
+
   .btn {
     background-color: transparent;
     border: none;

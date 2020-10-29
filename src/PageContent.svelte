@@ -2,8 +2,6 @@
   import Sidebar from "./PageContent/Sidebar.svelte";
   import NoteCreate from "./PageContent/NoteCreate.svelte";
   import NotesArea from "./PageContent/NotesArea.svelte";
-
-  let collapse = true;
 </script>
 
 <style>
@@ -12,16 +10,16 @@
     width: 100%;
 
     display: grid;
-    grid-template-columns: 23% auto;
-    grid-template-rows: auto auto;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
     grid-template-areas: "sb insert" "sb content";
-    margin-top: 50px;
+    margin-top: 75px;
     box-sizing: content-box;
   }
 </style>
 
 <div class="page-content">
   <Sidebar />
-  <NoteCreate bind:collapse />
+  <NoteCreate />
   <NotesArea />
 </div>

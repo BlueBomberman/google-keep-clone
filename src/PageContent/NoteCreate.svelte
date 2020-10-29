@@ -3,7 +3,7 @@
   import Palette from "./Palette.svelte";
   // import Icon from "fa-svelte";
 
-  export let collapse = false;
+  let collapse = true;
   function toggleCollapse() {
     collapse = !collapse;
   }
@@ -60,7 +60,7 @@
     grid-area: insert;
     margin: 0 auto;
     margin-top: 30px;
-    max-width: 60%;
+    max-width: 50%;
     min-height: 60px;
     background-color: var(--note-bg-color, rgba(255, 255, 255, 0.8));
     height: fit-content;
@@ -72,15 +72,20 @@
     border-width: 0;
   }
 
-  .title-field {
-    font-weight: 400;
+  .title-field input {
+    font-weight: 600;
+  }
+
+  ::placeholder {
+    color: rgb(119, 119, 119);
+    opacity: 1;
+    font-weight: 550;
   }
 
   input,
   textarea {
     width: 100%;
     border: none;
-    color: #666;
     outline: none;
     background: transparent;
   }
@@ -112,7 +117,7 @@
     grid-area: insert;
     margin: 0 auto;
     margin-top: 30px;
-    max-width: 60%;
+    max-width: 50%;
     background-color: var(--note-bg-color, rgba(255, 255, 255, 0.8));
     height: fit-content;
     border-radius: 5px;
@@ -121,8 +126,8 @@
     width: 100%;
     padding: 1rem;
     border-width: 0;
-    color: #666;
-    font-weight: 400;
+    color: rgb(119, 119, 119);
+    font-weight: 550;
     text-align: left;
   }
 </style>

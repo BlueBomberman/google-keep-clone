@@ -22,6 +22,11 @@
   section:hover {
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
   }
+
+  h3 {
+    margin: 0;
+    font-weight: 630;
+  }
 </style>
 
 <section on:click|self style="--note-bg-color:{note.color};">

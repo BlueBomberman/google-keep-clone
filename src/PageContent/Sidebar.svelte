@@ -1,9 +1,117 @@
+<script>
+  import Icon from "fa-svelte";
+  import { faTrashAlt } from "@fortawesome/free-solid-svg-icons/faTrashAlt";
+  import { faInbox } from "@fortawesome/free-solid-svg-icons/faInbox";
+  import { faBell } from "@fortawesome/free-solid-svg-icons/faBell";
+  import { faPen } from "@fortawesome/free-solid-svg-icons/faPen";
+  import { faLightbulb } from "@fortawesome/free-solid-svg-icons/faLightbulb";
+  // let trashIcon = faTrashAlt;
+  // let inboxIcon = faInbox;
+  // let bellIcon = faBell;
+  // let penIcon = faPen;
+  // let bulbIcon = faLightbulb;
+
+  const items = [
+    {
+      name: "Note",
+      icon: faLightbulb,
+      active: true,
+    },
+    {
+      name: "Promemoria",
+      icon: faBell,
+      active: false,
+    },
+    {
+      name: "Modifica Etichette",
+      icon: faPen,
+      active: false,
+    },
+    {
+      name: "Archivio",
+      icon: faInbox,
+      active: false,
+    },
+    {
+      name: "Cestino",
+      icon: faTrashAlt,
+      active: false,
+    },
+  ];
+
+  let sideOpen = true;
+</script>
+
 <style>
-  .side-bar {
-    background-color: yellow;
-    /* height: 100vh; */
+  nav {
     grid-area: sb;
+    font-weight: 550;
+  }
+
+  .Open-bar {
+    /* background-color: yellow; */
+    width: 300px; /*da togliere */
+  }
+
+  .Closed-bar {
+    /* background-color: yellow; */
+    width: 50px;
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  li {
+    display: flex;
+    cursor: pointer;
+  }
+
+  li:hover {
+    background-color: rgb(228, 228, 228);
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+  }
+
+  .btn {
+    margin-left: 1em;
+    background-color: transparent;
+    border: none;
+    color: rgb(88, 88, 88);
+    padding: 12px 16px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 100%;
+  }
+
+  .li-active {
+    background-color: #feefc3;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
   }
 </style>
 
-<div class="side-bar">Sidebar</div>
+<nav>
+  {#if sideOpen}
+    <ul class="Open-bar">
+      {#each items as item}
+        <li class:li-active={item.active}>
+          <button type="button" class="btn" on:click><Icon
+              bind:icon={item.icon} /></button>
+          <p>item.name</p>
+        </li>
+      {/each}
+    </ul>
+  {:else}
+    <div class="Closed-bar">
+      <ul class="Open-bar">
+        {#each items as item}
+          <li class:li-active={item.active}>
+            <button type="button" class="btn" on:click><Icon
+                bind:icon={item.icon} /></button>
+          </li>
+        {/each}
+      </ul>
+    </div>
+  {/if}
+</nav>
