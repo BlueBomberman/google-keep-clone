@@ -69,7 +69,7 @@
 </style>
 
 <div class="grid">
-  <Masonry colWidth={'minmax(250px, 0.25fr)'} bind:gridGap={gap}>
+  <Masonry colWidth={'minmax(250px, 0.25fr)'} bind:gridGap={gap} items={notes}>
     {#each notes as note}
       <Note
         {note}

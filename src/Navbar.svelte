@@ -27,16 +27,16 @@
     width: 100%;
     height: 75px;
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
+    justify-content: space-between;
     border-bottom: solid;
     border-width: thin;
     border-color: rgb(202, 202, 202);
     background-color: white;
+    padding: 0 2%;
   }
 
   .nav-item {
-    margin-left: 1em;
     cursor: pointer;
   }
 
@@ -48,6 +48,7 @@
     font-size: 20px;
     cursor: pointer;
     border-radius: 100%;
+    margin-bottom: 0;
   }
 
   .btn:hover {
@@ -71,32 +72,57 @@
     justify-content: space-between;
     margin-left: 6em;
   }
+
   .block {
     display: flex;
+    align-items: center;
   }
+
+  .menu-block {
+    min-width: 170px;
+  }
+
   .buttons-block {
-    width: 20%;
     display: flex;
     justify-content: flex-end;
+    min-width: 160px;
+  }
+
+  .search-icon {
+    visibility: hidden;
+  }
+
+  /* media query */
+  @media screen and (max-width: 880px) {
+    .search-bar {
+      visibility: hidden;
+    }
+    .search-icon {
+      visibility: visible;
+    }
   }
 </style>
 
 <header class="navbar">
-  <button type="button" class="nav-item btn" on:click={toggleShow}><Icon
-      bind:icon={menuIcon} /></button>
-  <img
-    src="https://www.gstatic.com/images/branding/product/1x/keep_48dp.png"
-    alt="logo google keep"
-    class="nav-item logo" />
-  <h2>Keep</h2>
+  <div class="block menu-block">
+    <button type="button" class="nav-item btn" on:click={toggleShow}><Icon
+        bind:icon={menuIcon} /></button>
+    <img
+      src="https://www.gstatic.com/images/branding/product/1x/keep_48dp.png"
+      alt="logo google keep"
+      class="nav-item logo" />
+    <h2>Keep</h2>
+  </div>
   <div class="search-bar nav-item">
     <div class="block">
       <Icon bind:icon={searchIcon} />
-      <div class="nav-item">Cerca...</div>
+      <div style="padding-left: 20px">Cerca...</div>
     </div>
     <Icon bind:icon={closeIcon} />
   </div>
   <div class="buttons-block">
+    <button type="button" class="btn search-icon"><Icon
+        bind:icon={searchIcon} /></button>
     <button type="button" class="btn"><Icon bind:icon={reloadIcon} /></button>
     <button type="button" class="btn"><Icon bind:icon={layoutIcon} /></button>
     <button type="button" class="btn"><Icon bind:icon={settingsIcon} /></button>
