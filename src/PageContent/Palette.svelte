@@ -54,6 +54,7 @@
     height: 26px;
     border-radius: 50%;
     border: none;
+    overflow: hidden;
   }
 
   .color:hover {
@@ -87,7 +88,7 @@
       0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
     transition: box-shadow 0.2s;
     width: 9em;
-    height: 7em;
+    height: 7.5em;
   }
 </style>
 

@@ -2,7 +2,6 @@
   export let note;
 
   import Palette from "./Palette.svelte";
-  let chosenColor;
 </script>
 
 <style>

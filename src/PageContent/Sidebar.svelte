@@ -1,15 +1,11 @@
 <script>
+  import { showSide } from "./store.js";
   import Icon from "fa-svelte";
   import { faTrashAlt } from "@fortawesome/free-solid-svg-icons/faTrashAlt";
   import { faInbox } from "@fortawesome/free-solid-svg-icons/faInbox";
   import { faBell } from "@fortawesome/free-solid-svg-icons/faBell";
   import { faPen } from "@fortawesome/free-solid-svg-icons/faPen";
   import { faLightbulb } from "@fortawesome/free-solid-svg-icons/faLightbulb";
-  // let trashIcon = faTrashAlt;
-  // let inboxIcon = faInbox;
-  // let bellIcon = faBell;
-  // let penIcon = faPen;
-  // let bulbIcon = faLightbulb;
 
   const items = [
     {
@@ -39,7 +35,13 @@
     },
   ];
 
-  let sideOpen = true;
+  //dichiarazione reattiva rispetto allo store
+  $: sideOpen = $showSide;
+  let mouseOver = false;
+
+  function toggleOver() {
+    mouseOver = !mouseOver;
+  }
 </script>
 
 <style>
@@ -55,22 +57,17 @@
 
   .Closed-bar {
     /* background-color: yellow; */
-    width: 50px;
+    width: 140px;
   }
 
   ul {
     padding: 0;
+    margin: 0;
   }
 
   li {
     display: flex;
     cursor: pointer;
-  }
-
-  li:hover {
-    background-color: rgb(228, 228, 228);
-    border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;
   }
 
   .btn {
@@ -84,7 +81,29 @@
     border-radius: 100%;
   }
 
-  .li-active {
+  .Closed-bar li:hover {
+    background-color: rgb(228, 228, 228);
+    border-radius: 25px;
+    height: fit-content;
+    width: fit-content;
+    padding: 0 0;
+  }
+
+  .Closed-bar .li-active {
+    background-color: #feefc3;
+    border-radius: 25px;
+    height: fit-content;
+    width: fit-content;
+    padding: 0 0;
+  }
+
+  .Open-bar li:hover {
+    background-color: rgb(228, 228, 228);
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+  }
+
+  .Open-bar .li-active {
     background-color: #feefc3;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
@@ -92,8 +111,8 @@
 </style>
 
 <nav>
-  {#if sideOpen}
-    <ul class="Open-bar">
+  {#if sideOpen || mouseOver}
+    <ul class="Open-bar" on:mouseleave={toggleOver}>
       {#each items as item}
         <li class:li-active={item.active}>
           <button type="button" class="btn" on:click><Icon
@@ -103,15 +122,13 @@
       {/each}
     </ul>
   {:else}
-    <div class="Closed-bar">
-      <ul class="Open-bar">
-        {#each items as item}
-          <li class:li-active={item.active}>
-            <button type="button" class="btn" on:click><Icon
-                bind:icon={item.icon} /></button>
-          </li>
-        {/each}
-      </ul>
-    </div>
+    <ul class="Closed-bar" on:mouseover={toggleOver}>
+      {#each items as item}
+        <li class:li-active={item.active}>
+          <button type="button" class="btn" on:click><Icon
+              bind:icon={item.icon} /></button>
+        </li>
+      {/each}
+    </ul>
   {/if}
 </nav>

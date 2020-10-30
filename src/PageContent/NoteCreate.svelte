@@ -38,7 +38,7 @@
     target.style.height = +target.scrollHeight + "px";
   }
 
-  export function text_area_resize(el) {
+  function text_area_resize(el) {
     resize({ target: el });
     el.style.overflow = "hidden";
     el.addEventListener("input", resize);

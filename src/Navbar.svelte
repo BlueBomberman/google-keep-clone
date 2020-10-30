@@ -7,6 +7,11 @@
   import { faRedoAlt } from "@fortawesome/free-solid-svg-icons/faRedoAlt";
   import { faCog } from "@fortawesome/free-solid-svg-icons/faCog";
 
+  import { showSide } from "./PageContent/store.js";
+  function toggleShow() {
+    showSide.update((value) => !value);
+  }
+
   let menuIcon = faBars;
   let searchIcon = faSearch;
   let closeIcon = faTimes;
@@ -77,7 +82,7 @@
 </style>
 
 <header class="navbar">
-  <button type="button" class="nav-item btn" on:click><Icon
+  <button type="button" class="nav-item btn" on:click={toggleShow}><Icon
       bind:icon={menuIcon} /></button>
   <img
     src="https://www.gstatic.com/images/branding/product/1x/keep_48dp.png"
