@@ -1,7 +1,6 @@
 <script>
   import { newNote } from "./store.js";
   import Palette from "./Palette.svelte";
-  // import Icon from "fa-svelte";
 
   let collapse = true;
   function toggleCollapse() {
@@ -11,7 +10,7 @@
   let nuovo = {
     title: "",
     text: "",
-    color: "rgba(255,255,255,0.8)",
+    color: "#ffffff",
     id: 0,
   };
 
@@ -25,10 +24,10 @@
     nuovo = {
       title: "",
       text: "",
-      color: "rgba(255, 255, 255, 0.8)",
+      color: "#ffffff",
       id: 0,
     };
-    chosenColor = "rgba(255, 255, 255, 0.8)";
+    chosenColor = "#ffffff";
     toggleCollapse();
   };
 
@@ -57,7 +56,6 @@
 
 <style>
   form {
-    grid-area: insert;
     margin: 0 auto;
     margin-top: 30px;
     max-width: 50%;

@@ -11,15 +11,21 @@
 
     display: grid;
     grid-template-columns: auto 1fr;
-    grid-template-rows: auto 1fr;
-    grid-template-areas: "sb insert" "sb content";
+    grid-auto-rows: min-content;
+    grid-template-areas: "sb content";
     margin-top: 75px;
     box-sizing: content-box;
+  }
+
+  .content {
+    grid-area: content;
   }
 </style>
 
 <div class="page-content">
   <Sidebar />
-  <NoteCreate />
-  <NotesArea />
+  <div class="content">
+    <NoteCreate />
+    <NotesArea />
+  </div>
 </div>

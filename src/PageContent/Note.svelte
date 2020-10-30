@@ -26,6 +26,10 @@
     margin: 0;
     font-weight: 630;
   }
+
+  p {
+    white-space: pre-line;
+  }
 </style>
 
 <section on:click|self style="--note-bg-color:{note.color};">

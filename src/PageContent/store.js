@@ -12,4 +12,4 @@ export let modalNote = writable();
 //   val: false;
 // });
 export let showModal = writable(false);
-export let showSide = writable(false);
+export let showSide = writable(true);

@@ -45,19 +45,11 @@
     width: 100%;
     height: 100%;
     position: fixed;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.7);
   }
-  /* .modal {
-    padding: 10px;
-    border-radius: 8px;
-    max-width: 400px;
-    margin: 10% auto;
-    text-align: center;
-    background: white;
-  } */
 
   .modal {
-    background-color: var(--note-bg-color, rgba(255, 255, 255, 0.8));
+    background-color: var(--note-bg-color, #ffffff);
     min-height: 4em;
     border-radius: 8px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
@@ -118,8 +110,16 @@
     on:click|self={saveChanges}
     style="--note-bg-color:{note.color};">
     <div class="modal">
-      <input class="title" type="text" bind:value={note.title} />
-      <textarea minrows="1" bind:value={note.text} use:text_area_resize />
+      <input
+        class="title"
+        placeholder="titolo qui.."
+        type="text"
+        bind:value={note.title} />
+      <textarea
+        placeholder="testo qui.."
+        minrows="1"
+        bind:value={note.text}
+        use:text_area_resize />
       <div class="footer">
         <Palette bind:chosenColor={note.color} />
         <!-- isNote={true} on:deletePressed -->

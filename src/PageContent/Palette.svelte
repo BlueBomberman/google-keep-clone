@@ -9,7 +9,7 @@
   let checkIcon = faCheck;
   let trashIcon = faTrashAlt;
 
-  export let chosenColor = "rgba(255,255,255,0.8)";
+  export let chosenColor = "#ffffff";
   export let isNote = false;
 
   // event dispatcher per eliminare la nota
@@ -25,7 +25,7 @@
   };
 
   const colors = [
-    "rgba(255,255,255,0.8)",
+    "#ffffff",
     "#f28b82",
     "#fbbc04",
     "#fff475",
