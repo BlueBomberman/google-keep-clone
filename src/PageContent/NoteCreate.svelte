@@ -1,36 +1,39 @@
 <script>
-  import { newNote } from "./store.js";
   import Palette from "./Palette.svelte";
-
-  let collapse = true;
-  function toggleCollapse() {
-    collapse = !collapse;
-  }
+  import NotesStore from "./store.js";
 
   let nuovo = {
     title: "",
     text: "",
     color: "#ffffff",
+    id: 0,
   };
 
-  const handle = () => {
-    newNote.set({
-      title: nuovo.title,
-      text: nuovo.text,
-      color: nuovo.color,
-      id: 0,
-      deleted: false,
-    });
+  //open and close form
+  let collapse = true;
+  function toggleCollapse() {
+    collapse = !collapse;
+  }
+
+  //add note
+  function handleSubmit() {
+    if (nuovo.title !== "" || nuovo.text !== "") {
+      nuovo.id = $NotesStore.length + 1;
+      NotesStore.update((notes) => {
+        return [nuovo, ...notes];
+      });
+      console.log(nuovo);
+    }
     nuovo = {
       title: "",
       text: "",
       color: "#ffffff",
+      id: 0,
     };
-    chosenColor = "#ffffff";
     toggleCollapse();
-  };
+  }
 
-  // per la textarea
+  //textarea resize
   function resize({ target }) {
     target.style.height = "1px";
     target.style.height = +target.scrollHeight + "px";
@@ -44,12 +47,6 @@
     return {
       destroy: () => el.removeEventListener("input", resize),
     };
-  }
-
-  //statement reattivo
-  let chosenColor;
-  $: {
-    nuovo.color = chosenColor;
   }
 </script>
 
@@ -133,7 +130,7 @@
   <div class="collapsed-form" on:click={toggleCollapse}>Scrivi una nota...</div>
 {:else}
   <form
-    on:submit|preventDefault={handle}
+    on:submit|preventDefault={handleSubmit}
     style="--note-bg-color:{nuovo.color};">
     <div class="title-field form-item">
       <input type="text" placeholder="Titolo" bind:value={nuovo.title} />
@@ -148,7 +145,7 @@
     </div>
 
     <div class="footer">
-      <Palette bind:chosenColor />
+      <Palette bind:chosenColor={nuovo.color} />
       <button class="btn-close">Chiudi</button>
     </div>
   </form>

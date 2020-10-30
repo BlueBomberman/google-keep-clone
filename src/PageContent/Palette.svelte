@@ -9,21 +9,6 @@
   let checkIcon = faCheck;
   let trashIcon = faTrashAlt;
 
-  export let chosenColor = "#ffffff";
-  export let isNote = false;
-
-  // event dispatcher per eliminare la nota
-  import { createEventDispatcher } from "svelte";
-  const dispatch = createEventDispatcher();
-
-  function deletePressed() {
-    dispatch("deletePressed");
-  }
-
-  const toggleChoose = (e, color) => {
-    chosenColor = color;
-  };
-
   const colors = [
     "#ffffff",
     "#f28b82",
@@ -38,6 +23,22 @@
     "#e6c9a8",
     "#e8eaed",
   ];
+
+  export let chosenColor = "#ffffff";
+  export let isNote = false;
+
+  // event dispatcher to delete
+  import { createEventDispatcher } from "svelte";
+  const dispatch = createEventDispatcher();
+
+  function deletePressed() {
+    dispatch("deletePressed");
+  }
+
+  //change the color
+  function toggleColor(color) {
+    chosenColor = color;
+  }
 </script>
 
 <style>
@@ -101,7 +102,7 @@
           type="button"
           class="color"
           style="background:{color}"
-          on:click={(e) => toggleChoose(e, color)}>
+          on:click={(e) => toggleColor(color)}>
           {#if color === chosenColor}
             <Icon color="#ccc" bind:icon={checkIcon} />
           {/if}

@@ -1,29 +1,33 @@
 <script>
-  import { modalNote } from "./store.js";
-  import { showModal } from "./store.js";
+  import { modalNoteId, showModal } from "./store.js";
+  import NotesStore from "./store.js";
   import Palette from "./Palette.svelte";
 
-  let show = "false";
-  showModal.subscribe((value) => {
-    show = value;
-  });
-
+  //initialize note
   let note;
-  modalNote.subscribe((value) => {
-    note = value;
+  modalNoteId.subscribe((id) => {
+    note = $NotesStore.filter((notes) => notes.id === $modalNoteId)[0];
   });
 
-  const toggleModal = () => {
-    if (show) show = false;
+  //close and save
+  function toggleModal() {
     showModal.set(false);
-  };
+  }
 
   function saveChanges() {
-    modalNote.set(note);
+    let index = $NotesStore.indexOf(
+      $NotesStore.filter((n) => n.id === note.id)[0]
+    );
+    if (index !== -1) {
+      NotesStore.update((notes) => {
+        notes[index] = note;
+        return notes;
+      });
+    }
     toggleModal();
   }
 
-  // per la textarea
+  // textarea resize
   function resize({ target }) {
     target.style.height = "1px";
     target.style.height = +target.scrollHeight + "px";
@@ -39,9 +43,12 @@
     };
   }
 
-  function deletePressed() {
-    note.deleted = true;
-    saveChanges();
+  //delete Operation
+  function handleDelete() {
+    NotesStore.update((currentNotes) => {
+      return currentNotes.filter((n) => n.id != note.id);
+    });
+    toggleModal();
   }
 </script>
 
@@ -109,7 +116,7 @@
   }
 </style>
 
-{#if show}
+{#if $showModal}
   <div
     class="backdrop"
     on:click|self={saveChanges}
@@ -129,7 +136,7 @@
         <Palette
           bind:chosenColor={note.color}
           isNote={true}
-          on:deletePressed={deletePressed} />
+          on:deletePressed={handleDelete} />
         <!--  -->
         <button on:click={saveChanges} class="btn-close">Chiudi</button>
       </div>
