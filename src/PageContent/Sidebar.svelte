@@ -117,7 +117,7 @@
         <li class:li-active={item.active}>
           <button type="button" class="btn" on:click><Icon
               bind:icon={item.icon} /></button>
-          <p>item.name</p>
+          <p>{item.name}</p>
         </li>
       {/each}
     </ul>

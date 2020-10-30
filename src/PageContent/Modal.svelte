@@ -18,10 +18,10 @@
     showModal.set(false);
   };
 
-  const saveChanges = (e) => {
+  function saveChanges() {
     modalNote.set(note);
     toggleModal();
-  };
+  }
 
   // per la textarea
   function resize({ target }) {
@@ -37,6 +37,11 @@
     return {
       destroy: () => el.removeEventListener("input", resize),
     };
+  }
+
+  function deletePressed() {
+    note.deleted = true;
+    saveChanges();
   }
 </script>
 
@@ -121,8 +126,11 @@
         bind:value={note.text}
         use:text_area_resize />
       <div class="footer">
-        <Palette bind:chosenColor={note.color} />
-        <!-- isNote={true} on:deletePressed -->
+        <Palette
+          bind:chosenColor={note.color}
+          isNote={true}
+          on:deletePressed={deletePressed} />
+        <!--  -->
         <button on:click={saveChanges} class="btn-close">Chiudi</button>
       </div>
     </div>

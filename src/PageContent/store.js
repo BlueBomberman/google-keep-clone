@@ -7,9 +7,7 @@ export const newNote = writable({
     id: 0
   })
 
+
 export let modalNote = writable();
-// export let showModal = writable({
-//   val: false;
-// });
 export let showModal = writable(false);
 export let showSide = writable(true);

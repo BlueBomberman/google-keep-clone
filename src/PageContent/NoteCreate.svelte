@@ -11,7 +11,6 @@
     title: "",
     text: "",
     color: "#ffffff",
-    id: 0,
   };
 
   const handle = () => {
@@ -20,12 +19,12 @@
       text: nuovo.text,
       color: nuovo.color,
       id: 0,
+      deleted: false,
     });
     nuovo = {
       title: "",
       text: "",
       color: "#ffffff",
-      id: 0,
     };
     chosenColor = "#ffffff";
     toggleCollapse();

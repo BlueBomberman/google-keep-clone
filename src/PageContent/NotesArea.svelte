@@ -12,12 +12,14 @@
       title: "Libri da leggere",
       text: "-Signore degli anelli \n-il mondo di sofia \n-l'alchimista",
       color: "#cbf0f8",
+      deleted: false,
     },
     {
       id: 2,
       title: "Ricette",
       text: "Pasta al sugo, \nbistecche ai ferri, \ninsalata russa",
       color: "#ffffff",
+      deleted: false,
     },
     {
       id: 3,
@@ -25,6 +27,7 @@
       text:
         "'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer bibendum eros est, at accumsan sem cursus nec.' \n\n'Nulla facilisi. Phasellus nec turpis vitae augue pellentesque feugiat. Aliquam lacinia ornare risus, quis suscipit erat bibendum vitae. Suspendisse ac enim consectetur, facilisis odio sit amet, interdum ipsum.' ",
       color: "#fdcfe8",
+      deleted: false,
     },
   ];
 
@@ -71,10 +74,12 @@
 <div class="grid">
   <Masonry colWidth={'minmax(250px, 0.25fr)'} bind:gridGap={gap} items={notes}>
     {#each notes as note}
-      <Note
-        {note}
-        on:click={(e) => toggleModal(e, note.id)}
-        on:deletePressed={deleteButton(note)} />
+      {#if !note.deleted}
+        <Note
+          {note}
+          on:click={(e) => toggleModal(e, note.id)}
+          on:deletePressed={deleteButton(note)} />
+      {/if}
     {/each}
   </Masonry>
 </div>
