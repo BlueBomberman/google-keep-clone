@@ -2,8 +2,8 @@
   import Note from "./Note.svelte";
   import Masonry from "svelte-masonry/Masonry.svelte";
   import NotesStore from "./store.js";
-  import { fade } from "svelte/transition";
-  import { flip } from "svelte/animate";
+  // import { fade } from "svelte/transition";
+  // import { flip } from "svelte/animate";
 
   let gap = "1.5rem";
 </script>

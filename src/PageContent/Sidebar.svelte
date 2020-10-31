@@ -34,9 +34,6 @@
       active: false,
     },
   ];
-
-  //dichiarazione reattiva rispetto allo store
-  $: sideOpen = $showSide;
   let mouseOver = false;
 
   function toggleOver() {
@@ -111,7 +108,7 @@
 </style>
 
 <nav>
-  {#if sideOpen || mouseOver}
+  {#if $showSide || mouseOver}
     <ul class="Open-bar" on:mouseleave={toggleOver}>
       {#each items as item}
         <li class:li-active={item.active}>

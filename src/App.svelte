@@ -19,5 +19,6 @@
 <main class="main">
   <Modal />
   <Navbar />
+
   <PageContent />
 </main>

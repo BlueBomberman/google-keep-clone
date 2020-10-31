@@ -23,6 +23,7 @@
 <style>
   .navbar {
     position: fixed;
+    z-index: 5;
     top: 0;
     width: 100%;
     height: 75px;

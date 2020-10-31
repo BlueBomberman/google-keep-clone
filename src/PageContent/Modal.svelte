@@ -57,6 +57,7 @@
     width: 100%;
     height: 100%;
     position: fixed;
+    z-index: 100;
     background: rgba(0, 0, 0, 0.7);
   }
 
@@ -114,6 +115,10 @@
   .btn-close:hover {
     background: white;
   }
+
+  .block {
+    display: flex;
+  }
 </style>
 
 {#if $showModal}
@@ -133,11 +138,12 @@
         bind:value={note.text}
         use:text_area_resize />
       <div class="footer">
-        <Palette
-          bind:chosenColor={note.color}
-          isNote={true}
-          on:deletePressed={handleDelete} />
-        <!--  -->
+        <div class="block">
+          <Palette
+            bind:chosenColor={note.color}
+            isNote={true}
+            on:deletePressed={handleDelete} />
+        </div>
         <button on:click={saveChanges} class="btn-close">Chiudi</button>
       </div>
     </div>

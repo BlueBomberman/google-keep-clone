@@ -42,10 +42,6 @@
 </script>
 
 <style>
-  .container {
-    display: flex;
-  }
-
   .color {
     box-shadow: 0px 0px 2px 1px rgba(122, 122, 122, 0.5);
     opacity: 0.8;
@@ -93,25 +89,23 @@
   }
 </style>
 
-<div class="container">
-  <div class="wrapper">
-    <button type="button" class="btn"><Icon bind:icon={paletteIcon} /></button>
-    <div class="pop-over">
-      {#each colors as color}
-        <button
-          type="button"
-          class="color"
-          style="background:{color}"
-          on:click={(e) => toggleColor(color)}>
-          {#if color === chosenColor}
-            <Icon color="#ccc" bind:icon={checkIcon} />
-          {/if}
-        </button>
-      {/each}
-    </div>
+<div class="wrapper">
+  <button type="button" class="btn"><Icon bind:icon={paletteIcon} /></button>
+  <div class="pop-over">
+    {#each colors as color}
+      <button
+        type="button"
+        class="color"
+        style="background:{color}"
+        on:click={(e) => toggleColor(color)}>
+        {#if color === chosenColor}
+          <Icon color="#ccc" bind:icon={checkIcon} />
+        {/if}
+      </button>
+    {/each}
   </div>
-  {#if isNote}
-    <button type="button" class="btn" on:click={deletePressed}><Icon
-        bind:icon={trashIcon} /></button>
-  {/if}
 </div>
+{#if isNote}
+  <button type="button" class="btn" on:click={deletePressed}><Icon
+      bind:icon={trashIcon} /></button>
+{/if}

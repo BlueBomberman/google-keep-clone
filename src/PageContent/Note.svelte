@@ -1,6 +1,5 @@
 <script>
   export let note;
-  import NotesArea from "./NotesArea.svelte";
   import Palette from "./Palette.svelte";
   import { modalNoteId, showModal } from "./store.js";
   import NotesStore from "./store.js";
@@ -45,6 +44,15 @@
   p {
     white-space: pre-line;
   }
+
+  .container {
+    display: flex;
+    visibility: hidden;
+  }
+
+  section:hover .container {
+    visibility: visible;
+  }
 </style>
 
 <section on:click|self={toggleModal} style="--note-bg-color:{note.color};">
@@ -52,8 +60,10 @@
   <p on:click|self={toggleModal}>{note.text}</p>
 
   <slot />
-  <Palette
-    bind:chosenColor={note.color}
-    isNote={true}
-    on:deletePressed={handleDelete(note.id)} />
+  <div class="container">
+    <Palette
+      bind:chosenColor={note.color}
+      isNote={true}
+      on:deletePressed={handleDelete(note.id)} />
+  </div>
 </section>
