@@ -1,4 +1,6 @@
-*Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
+#google-keep-clone
+In questo progetto ho implementato alcune funzionalità di base di Google Keep(https://keep.google.com/) con svelte(https://svelte.dev/).
+Qui potete trovare una demo(https://google-keep-clone-mu.vercel.app/).
 
 ---
 
