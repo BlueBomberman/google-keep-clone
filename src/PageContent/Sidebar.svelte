@@ -29,7 +29,7 @@
       active: false,
     },
     {
-      name: "Trash",
+      name: "Cestino",
       icon: faTrashAlt,
       active: false,
     },
