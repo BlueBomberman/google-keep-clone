@@ -48,13 +48,7 @@
   }
 
   .Open-bar {
-    /* background-color: yellow; */
-    width: 300px; /*da togliere */
-  }
-
-  .Closed-bar {
-    /* background-color: yellow; */
-    width: 140px;
+    width: 300px;
   }
 
   ul {
@@ -112,7 +106,7 @@
     <ul class="Open-bar" on:mouseleave={toggleOver}>
       {#each items as item}
         <li class:li-active={item.active}>
-          <button type="button" class="btn" on:click><Icon
+          <button type="button" class="btn"><Icon
               bind:icon={item.icon} /></button>
           <p>{item.name}</p>
         </li>
@@ -122,7 +116,7 @@
     <ul class="Closed-bar" on:mouseover={toggleOver}>
       {#each items as item}
         <li class:li-active={item.active}>
-          <button type="button" class="btn" on:click><Icon
+          <button type="button" class="btn"><Icon
               bind:icon={item.icon} /></button>
         </li>
       {/each}

@@ -11,10 +11,10 @@
 
     display: grid;
     grid-template-columns: auto 1fr;
-    grid-auto-rows: min-content;
+    /* grid-auto-rows: min-content; */
     grid-template-areas: "sb content";
     margin-top: 75px;
-    box-sizing: content-box;
+    /* box-sizing: content-box; */
   }
 
   .content {

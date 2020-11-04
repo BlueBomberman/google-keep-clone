@@ -46,7 +46,7 @@
   //delete Operation
   function handleDelete() {
     NotesStore.update((currentNotes) => {
-      return currentNotes.filter((n) => n.id != note.id);
+      return currentNotes.filter((n) => n.id !== note.id);
     });
     toggleModal();
   }

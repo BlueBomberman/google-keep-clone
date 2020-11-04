@@ -7,7 +7,7 @@
   //delete operation
   function handleDelete(id) {
     NotesStore.update((currentNotes) => {
-      return currentNotes.filter((n) => n.id != id);
+      return currentNotes.filter((n) => n.id !== id);
     });
   }
 
@@ -25,7 +25,6 @@
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
       0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
     border-radius: 8px;
-    transition: box-shadow 0.2s;
     width: 100%;
     text-align: left;
     cursor: pointer;
@@ -59,7 +58,7 @@
   <h3 on:click|self={toggleModal}>{note.title}</h3>
   <p on:click|self={toggleModal}>{note.text}</p>
 
-  <slot />
+  <!-- <slot /> -->
   <div class="container">
     <Palette
       bind:chosenColor={note.color}

@@ -18,11 +18,10 @@
   //add note
   function handleSubmit() {
     if (nuovo.title !== "" || nuovo.text !== "") {
-      nuovo.id = $NotesStore.length + 1;
+      nuovo.id = $NotesStore.length + 1; /* da cambiare */
       NotesStore.update((notes) => {
         return [nuovo, ...notes];
       });
-      console.log(nuovo);
     }
     nuovo = {
       title: "",
@@ -108,7 +107,6 @@
   }
 
   .collapsed-form {
-    grid-area: insert;
     margin: 0 auto;
     margin-top: 30px;
     max-width: 50%;
